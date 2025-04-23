@@ -1,0 +1,8 @@
+<div class="container">
+    <h2>Update Post</h2>
+    <form (ngSubmit)="updatePost()">
+      <input type="text" [(ngModel)]="title" name="title" placeholder="Post Title" required />
+      <textarea [(ngModel)]="content" name="content" placeholder="Post Content" required></textarea>
+      <button type="submit">Update Post</button>
+    </form>
+  </div>
