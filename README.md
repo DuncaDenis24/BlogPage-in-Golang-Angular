@@ -1,137 +1,282 @@
-This is a full-stack blog application built using Go (Golang) for the backend and Angular for the frontend. The app allows users to create, read, update, and delete blog posts. It also includes user authentication, ensuring that only logged-in users can manage their posts.
+# BlogPage in Golang & Angular
 
-Features
-User Authentication: Users can register, log in, and manage their sessions.
+This project is a full-stack web application for a simple blog, built using Go for the backend and Angular for the frontend. It allows users to view blog posts and, potentially with further development, could include features for creating, updating, and deleting posts.
 
-CRUD Operations: Create, read, update, and delete blog posts.
+## Table of Contents
 
-Role-based Access: Users can update or delete only their own posts.
+* [Features](#features)
+* [Technologies Used](#technologies-used)
+* [Prerequisites](#prerequisites)
+* [Getting Started](#getting-started)
+    * [Backend Setup (Go)](#backend-setup-go)
+    * [Frontend Setup (Angular)](#frontend-setup-angular)
+* [Project Structure](#project-structure)
+* [Further Development](#further-development)
+* [Contributing](#contributing)
+* [License](#license)
+* [Author](#author)
 
-Frontend with Angular: The frontend is built using Angular for a responsive and dynamic user experience.
+## Features
 
-Backend with Go (Golang): The backend is built using Go, which serves as an API to handle user and post management.
+* **View Blog Posts:** Users can see a list of blog posts fetched from the backend.
+* **View Post Details:** Users can navigate to a specific post to see its full content.
+* **Basic Layout:** Provides a foundational structure for a blog application.
 
-Database: A database (likely MySQL or SQLite) is used to store user and post information.
+## Technologies Used
 
-Tech Stack
-Backend: Go (Golang), Gorilla Mux, GORM
+**Backend (Go):**
 
-Frontend: Angular, RxJS, HTTPClient
+* [Go](https://go.dev/) - Programming language.
+* [Gin](https://gin-gonic.com/) - Web framework for building the API.
+* [GORM](https://gorm.io/) - ORM library for database interaction.
+* [sqlserver](https://github.com/microsoft/go-mssqldb) - SQL Server driver for Go (based on the initial database setup).
+* Potentially other Go standard libraries and third-party packages for tasks like environment variable handling, logging, etc.
 
-Database: MySQL or SQLite
+**Frontend (Angular):**
 
-Authentication: JWT (JSON Web Tokens)
+* [Angular CLI](https://angular.io/cli) - Command-line interface for Angular development.
+* [Angular Framework](https://angular.io/) - Frontend framework for building the user interface.
+* [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript that provides static typing.
+* [Angular Router](https://angular.io/api/router) - For navigation between different views.
+* [Angular HttpClient](https://angular.io/api/common/http/HttpClient) - For making HTTP requests to the backend API.
+* [FormsModule](https://angular.io/api/forms/FormsModule) - For handling forms (likely used in future development for creating/editing posts).
+* [CommonModule](https://angular.io/api/common/CommonModule) - Provides common directives and pipes.
+* Potentially other Angular Material or custom CSS for styling.
 
-Getting Started
-Prerequisites
-Go: Ensure Go is installed on your machine. You can download it from the official Go website.
+**Database:**
 
-Angular CLI: Install Angular CLI globally with the following command:
+* [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/) - The database system used for storing blog post data.
 
-bash
-Copiază
-Editează
-npm install -g @angular/cli
-Database: Set up a MySQL or SQLite database for storing posts and user data.
+## Prerequisites
 
-Setup Backend (Go)
-Clone the repository:
+Before you begin, ensure you have the following installed:
 
-bash
-Copiază
-Editează
-git clone https://github.com/DuncaDenis24/BlogPage-in-Golang-Angular.git
-cd BlogPage-in-Golang-Angular
-Navigate to the backend folder (e.g., backend) and install dependencies:
+* **Go:** [Installation Guide](https://go.dev/doc/install) (Make sure your `GOPATH` and `PATH` are configured correctly).
+* **Angular CLI:** Install globally using npm: `npm install -g @angular/cli` ([Installation Guide](https://angular.io/cli#installation)).
+* **Node.js and npm (or yarn):** Angular requires Node.js and its package manager npm (or yarn). [Installation Guide](https://nodejs.org/).
+* **Microsoft SQL Server:** You need a running instance of SQL Server to connect to. Ensure you have the necessary credentials and the database is set up (or will be set up by the Go backend if configured to do so).
 
-bash
-Copiază
-Editează
-cd backend
-go mod tidy
-Set up the database. Ensure your database connection parameters are correctly set in the Go application.
+## Getting Started
 
-Run the Go server:
+Follow the steps below to get the project running on your local machine.
 
-bash
-Copiază
-Editează
-go run main.go
-The backend should now be running on http://localhost:8080.
+### Backend Setup (Go)
 
-Setup Frontend (Angular)
-Navigate to the frontend folder (e.g., frontend) and install the required dependencies:
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/DuncaDenis24/BlogPage-in-Golang-Angular.git](https://github.com/DuncaDenis24/BlogPage-in-Golang-Angular.git)
+    cd BlogPage-in-Golang-Angular/server
+    ```
 
-bash
-Copiază
-Editează
-cd frontend
-npm install
-Set up the API base URL in the Angular app (src/environments/environment.ts):
+2.  **Install Go dependencies:**
+    ```bash
+    go mod tidy
+    go get [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin)
+    go get gorm.io/gorm
+    go get gorm.io/driver/sqlserver
+    # Install any other dependencies listed in your go.mod file
+    ```
 
-typescript
-Copiază
-Editează
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8080' // Adjust the URL if necessary
-};
-Run the Angular application:
+3.  **Configure Database Connection:**
+    * Locate the database connection string in your Go code (likely in a file like `database/database.go`).
+    * Update the connection string to match your SQL Server instance details, including the server name, port, database name, and authentication credentials if necessary.
 
-bash
-Copiază
-Editează
-ng serve
-The frontend should now be running on http://localhost:4200.
+    ```go
+    // Example connection string (may need adjustment)
+    dsn := "sqlserver://your_username:your_password@your_server:your_port?database=your_database&encrypt=disable&trustservercertificate=true"
+    ```
 
-API Endpoints
-POST /api/login: Log in with email and password, returns a JWT token.
+4.  **Run the Go backend:**
+    ```bash
+    go run main.go
+    ```
+    The backend server should start, typically on a default port (check your `main.go` or configuration).
 
-POST /api/register: Register a new user.
+### Frontend Setup (Angular)
 
-GET /api/posts: Get all posts.
+1.  **Navigate to the frontend directory:**
+    ```bash
+    cd ../client
+    ```
 
-POST /api/posts: Create a new post (requires authentication).
+2.  **Install Angular dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-GET /api/posts/:id: Get a specific post by ID.
+3.  **Configure Backend API URL:**
+    * Look for where the Angular application makes API calls (likely in a service file, e.g., `src/app/services/posts/post.service.ts`).
+    * Update the `apiUrl` variable to point to the address where your Go backend is running (e.g., `http://localhost:8080/api`).
 
-PUT /api/posts/:id: Update a specific post (requires authentication).
+    ```typescript
+    // Example in post.service.ts
+    private apiUrl = 'http://localhost:8080/api';
+    ```
 
-DELETE /api/posts/:id: Delete a post (requires authentication).
+4.  **Run the Angular frontend:**
+    ```bash
+    ng serve -o
+    # or
+    yarn start
+    ```
+    This command will build the Angular application and serve it in your browser, usually at `http://localhost:4200`.
 
-User Authentication
-The backend uses JWT (JSON Web Tokens) to authenticate users. After logging in, the user will receive a token, which should be included in the request header as Authorization: Bearer <token> for all authenticated routes.
+## Project Structure
+Markdown
 
-Environment Variables
-The backend expects the following environment variables to be set:
+# BlogPage in Golang & Angular
 
-DB_HOST: The host of the database (e.g., localhost).
+This project is a full-stack web application for a simple blog, built using Go for the backend and Angular for the frontend. It allows users to view blog posts and, potentially with further development, could include features for creating, updating, and deleting posts.
 
-DB_PORT: The port of the database (e.g., 3306 for MySQL).
+## Table of Contents
 
-DB_NAME: The name of the database.
+* [Features](#features)
+* [Technologies Used](#technologies-used)
+* [Prerequisites](#prerequisites)
+* [Getting Started](#getting-started)
+    * [Backend Setup (Go)](#backend-setup-go)
+    * [Frontend Setup (Angular)](#frontend-setup-angular)
+* [Project Structure](#project-structure)
+* [Further Development](#further-development)
+* [Contributing](#contributing)
+* [License](#license)
+* [Author](#author)
 
-DB_USER: The username for the database.
+## Features
 
-DB_PASSWORD: The password for the database.
+* **View Blog Posts:** Users can see a list of blog posts fetched from the backend.
+* **View Post Details:** Users can navigate to a specific post to see its full content.
+* **Basic Layout:** Provides a foundational structure for a blog application.
 
-Directory Structure
-graphql
-Copiază
-Editează
-├── backend/
-│   ├── main.go               # Entry point for the Go backend
-│   ├── models/               # Contains Go models for the app (e.g., User, Post)
-│   ├── controllers/          # API controllers for handling routes
-│   ├── middleware/           # JWT and authentication middleware
-│   ├── routes/               # API route definitions
-│   └── database/             # Database connection setup
-├── frontend/
-│   ├── src/                  # Angular frontend code
-│   │   ├── app/              # Main application components (Posts, Create, Update)
-│   │   ├── services/         # Angular services for API interaction
-│   │   ├── environments/     # Environment configuration for different builds
-│   │   └── assets/           # Static assets (images, styles, etc.)
-│   ├── angular.json          # Angular project configuration
-│   └── package.json          # Node.js project configuration
-└── README.md                 # This file
+## Technologies Used
+
+**Backend (Go):**
+
+* [Go](https://go.dev/) - Programming language.
+* [Gin](https://gin-gonic.com/) - Web framework for building the API.
+* [GORM](https://gorm.io/) - ORM library for database interaction.
+* [sqlserver](https://github.com/microsoft/go-mssqldb) - SQL Server driver for Go (based on the initial database setup).
+* Potentially other Go standard libraries and third-party packages for tasks like environment variable handling, logging, etc.
+
+**Frontend (Angular):**
+
+* [Angular CLI](https://angular.io/cli) - Command-line interface for Angular development.
+* [Angular Framework](https://angular.io/) - Frontend framework for building the user interface.
+* [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript that provides static typing.
+* [Angular Router](https://angular.io/api/router) - For navigation between different views.
+* [Angular HttpClient](https://angular.io/api/common/http/HttpClient) - For making HTTP requests to the backend API.
+* [FormsModule](https://angular.io/api/forms/FormsModule) - For handling forms (likely used in future development for creating/editing posts).
+* [CommonModule](https://angular.io/api/common/CommonModule) - Provides common directives and pipes.
+* Potentially other Angular Material or custom CSS for styling.
+
+**Database:**
+
+* [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/) - The database system used for storing blog post data.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+* **Go:** [Installation Guide](https://go.dev/doc/install) (Make sure your `GOPATH` and `PATH` are configured correctly).
+* **Angular CLI:** Install globally using npm: `npm install -g @angular/cli` ([Installation Guide](https://angular.io/cli#installation)).
+* **Node.js and npm (or yarn):** Angular requires Node.js and its package manager npm (or yarn). [Installation Guide](https://nodejs.org/).
+* **Microsoft SQL Server:** You need a running instance of SQL Server to connect to. Ensure you have the necessary credentials and the database is set up (or will be set up by the Go backend if configured to do so).
+
+## Getting Started
+
+Follow the steps below to get the project running on your local machine.
+
+### Backend Setup (Go)
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/DuncaDenis24/BlogPage-in-Golang-Angular.git](https://github.com/DuncaDenis24/BlogPage-in-Golang-Angular.git)
+    cd BlogPage-in-Golang-Angular/server
+    ```
+
+2.  **Install Go dependencies:**
+    ```bash
+    go mod tidy
+    go get [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin)
+    go get gorm.io/gorm
+    go get gorm.io/driver/sqlserver
+    # Install any other dependencies listed in your go.mod file
+    ```
+
+3.  **Configure Database Connection:**
+    * Locate the database connection string in your Go code (likely in a file like `database/database.go`).
+    * Update the connection string to match your SQL Server instance details, including the server name, port, database name, and authentication credentials if necessary.
+
+    ```go
+    // Example connection string (may need adjustment)
+    dsn := "sqlserver://your_username:your_password@your_server:your_port?database=your_database&encrypt=disable&trustservercertificate=true"
+    ```
+
+4.  **Run the Go backend:**
+    ```bash
+    go run main.go
+    ```
+    The backend server should start, typically on a default port (check your `main.go` or configuration).
+
+### Frontend Setup (Angular)
+
+1.  **Navigate to the frontend directory:**
+    ```bash
+    cd ../client
+    ```
+
+2.  **Install Angular dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Configure Backend API URL:**
+    * Look for where the Angular application makes API calls (likely in a service file, e.g., `src/app/services/posts/post.service.ts`).
+    * Update the `apiUrl` variable to point to the address where your Go backend is running (e.g., `http://localhost:8080/api`).
+
+    ```typescript
+    // Example in post.service.ts
+    private apiUrl = 'http://localhost:8080/api';
+    ```
+
+4.  **Run the Angular frontend:**
+    ```bash
+    ng serve -o
+    # or
+    yarn start
+    ```
+    This command will build the Angular application and serve it in your browser, usually at `http://localhost:4200`.
+
+## Project Structure
+
+BlogPage-in-Golang-Angular/
+├── server/             # Go backend code
+│   ├── database/       # Database connection and models
+│   ├── handlers/       # API request handlers (controllers)
+│   ├── models/         # Data structures (Go structs)
+│   ├── routes/         # API endpoint definitions
+│   ├── main.go         # Entry point for the backend application
+│   ├── go.mod          # Go module definition
+│   └── go.sum          # Go dependencies checksum
+└── client/             # Angular frontend code
+├── angular.json    # Angular CLI configuration
+├── package.json    # Frontend dependencies
+├── tsconfig.json   # TypeScript configuration
+├── src/
+│   ├── app/        # Application source code
+│   │   ├── components/ # Angular components
+│   │   ├── services/   # Angular services
+│   │   ├── app-routing.module.ts # Application routes
+│   │   ├── app.component.ts    # Root component
+│   │   └── ...
+│   ├── assets/     # Static assets
+│   ├── environments/ # Environment-specific configurations
+│   ├── index.html    # Main HTML file
+│   ├── main.ts       # Entry point for Angular
+│   └── ...
+├── node_modules/   # Frontend dependencies (not in Git)
+└── ...
