@@ -1,0 +1,23 @@
+<h2>All Blog Posts</h2>
+<div *ngIf="!authService.isLoggedIn()">
+  <p>Please log in to view blog posts.</p>
+</div>
+<ul *ngIf="authService.isLoggedIn()">
+  <li *ngFor="let post of posts">
+    <p>Username: {{post.user.username || "Unknown"}}</p>
+    <strong>{{ post.title }}</strong><br />
+    {{ post.content }}
+    <p>Post created at: {{ post.created_at | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+    <button (click)="deletePost(post.id)">Delete</button>
+    <button [routerLink]="['/update', post.id]">Edit</button>
+  </li>
+</ul>
+<div *ngIf="posts.length === 0 && authService.isLoggedIn()">
+  <p>No posts available.</p>
+</div>
+<div *ngIf="!authService.isLoggedIn()">
+  <p>To create a new post, please log in.</p>
+</div>
+<div *ngIf="authService.isLoggedIn()">
+<a routerLink="/create">Create New Post</a>
+</div>

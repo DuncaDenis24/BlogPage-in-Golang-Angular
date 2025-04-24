@@ -1,0 +1,20 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form (submit)="login(); $event.preventDefault()">
+      <label>
+        Username:
+        <input [(ngModel)]="username" name="username" required />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" [(ngModel)]="password" name="password" required />
+      </label>
+      <br />
+      <button type="submit">Login</button>
+    </form>
+  
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    
+  </div>
+  

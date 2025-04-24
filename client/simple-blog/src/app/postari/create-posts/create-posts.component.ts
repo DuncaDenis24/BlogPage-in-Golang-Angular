@@ -1,30 +1,37 @@
 import { Component } from '@angular/core';
-import { PostService } from '../post.service';
+import { PostService } from '../../services/posts/post.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
-
 
 @Component({
   selector: 'app-create-posts',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './create-posts.component.html',
-  styleUrl: './create-posts.component.css'
+  styleUrls: ['./create-posts.component.css']  
 })
 export class CreatePostsComponent {
   title: string = '';
   content: string = '';
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService,private router: Router) {}
 
   createPost() {
+    const user = localStorage.getItem('user');
+    const userId= user ? JSON.parse(user).id : null;
     const newPost = {
       title: this.title,
       content: this.content,
+      user_id: userId
     };
     this.postService.addPost(newPost).subscribe(() => {
-      // Add the new post to the list (or you can reload the posts)
       alert('Post created successfully!');
+      this.router.navigate(['/posts']);
+    }, error => {
+      console.error('Error creating post:', error);
+      alert('An error occurred while creating the post.');
     });
   }
+  
 }
