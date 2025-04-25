@@ -1,6 +1,6 @@
 # BlogPage in Golang & Angular
 
-This project is a full-stack web application for a simple blog, built using Go for the backend and Angular for the frontend. It allows users to view blog posts and, potentially with further development, could include features for creating, updating, and deleting posts.
+This project is a full-stack web application for a simple blog, built using Go for the backend and Angular for the frontend. It allows users to view blog posts and features for creating, updating, and deleting posts.
 
 ## Table of Contents
 
@@ -11,15 +11,10 @@ This project is a full-stack web application for a simple blog, built using Go f
     * [Backend Setup (Go)](#backend-setup-go)
     * [Frontend Setup (Angular)](#frontend-setup-angular)
 * [Project Structure](#project-structure)
-* [Further Development](#further-development)
-* [Contributing](#contributing)
-* [License](#license)
-* [Author](#author)
 
 ## Features
 
 * **View Blog Posts:** Users can see a list of blog posts fetched from the backend.
-* **View Post Details:** Users can navigate to a specific post to see its full content.
 * **Basic Layout:** Provides a foundational structure for a blog application.
 
 ## Technologies Used
@@ -27,10 +22,9 @@ This project is a full-stack web application for a simple blog, built using Go f
 **Backend (Go):**
 
 * [Go](https://go.dev/) - Programming language.
-* [Gin](https://gin-gonic.com/) - Web framework for building the API.
 * [GORM](https://gorm.io/) - ORM library for database interaction.
 * [sqlserver](https://github.com/microsoft/go-mssqldb) - SQL Server driver for Go (based on the initial database setup).
-* Potentially other Go standard libraries and third-party packages for tasks like environment variable handling, logging, etc.
+* Other Go standard libraries and third-party packages for tasks like environment variable handling, logging, etc.
 
 **Frontend (Angular):**
 
@@ -41,7 +35,7 @@ This project is a full-stack web application for a simple blog, built using Go f
 * [Angular HttpClient](https://angular.io/api/common/http/HttpClient) - For making HTTP requests to the backend API.
 * [FormsModule](https://angular.io/api/forms/FormsModule) - For handling forms (likely used in future development for creating/editing posts).
 * [CommonModule](https://angular.io/api/common/CommonModule) - Provides common directives and pipes.
-* Potentially other Angular Material or custom CSS for styling.
+* Other Angular Material or custom CSS for styling.
 
 **Database:**
 
