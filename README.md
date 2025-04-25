@@ -146,3 +146,9 @@ BlogPage-in-Golang-Angular/
       ...
     node_modules/   # Frontend dependencies (not in Git)
     ...
+```
+Functionality
+
+![image](https://github.com/user-attachments/assets/17f74bf8-cbdb-4f6d-8698-cd64c64d51a2)   ![image](https://github.com/user-attachments/assets/03d49b23-04c5-4194-84bd-aa45c3af5f4b)    ![image](https://github.com/user-attachments/assets/afa109f7-3383-4fa2-bab7-3e5793ecbfd8)
+
+
