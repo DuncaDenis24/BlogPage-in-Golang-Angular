@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['/posts']);
+      this.router.navigate(['']);
     } else {
       this.getPosts();
     }
@@ -45,7 +45,12 @@ export class PostsComponent implements OnInit {
 
   deletePost(id: number): void {
     const postToDelete = this.posts.find(post => post.id === id);
-    if (postToDelete && postToDelete.canDelete) {
+
+    // Ensure the logged-in user is the owner of the post before deleting
+    const loggedInUser = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log('Logged in user:', loggedInUser);
+    console.log('Post to delete:', postToDelete);
+    if (postToDelete && loggedInUser.id === postToDelete.user_id) {
       this.postService.deletePost(id).subscribe(() => {
         this.posts = this.posts.filter(post => post.id !== id);
       });

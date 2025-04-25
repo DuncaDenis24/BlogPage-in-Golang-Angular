@@ -30,7 +30,7 @@ export class UpdatePostsComponent {
       this.getPostById();
     });
   }
-
+  
   getPostById() {
     this.postService.getPostById(this.postId).subscribe((post) => {
       this.title = post.title;
@@ -55,7 +55,7 @@ export class UpdatePostsComponent {
       this.postService.updatePost(this.postId, updatedPost).subscribe({
         next: () => {
           alert('Post updated successfully!');
-          this.router.navigate(['/posts']);
+          this.router.navigate(['']);
         },
         error: (err) => {
           console.error('Error updating post:', err);
@@ -65,10 +65,10 @@ export class UpdatePostsComponent {
     } else {
       console.log('User is not authorized to update this post');
       alert('You can only update your own posts.');
-      this.router.navigate(['/posts']); 
+      this.router.navigate(['']); 
     }
   }
   cancelUpdate() {
-    this.router.navigate(['/posts']);
+    this.router.navigate(['']);
   }
 }

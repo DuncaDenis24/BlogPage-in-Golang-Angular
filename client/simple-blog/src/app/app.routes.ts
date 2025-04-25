@@ -7,7 +7,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 
 export const routes: Routes = [
-  { path: 'posts', component: PostsComponent },
+  { path: '', component: PostsComponent },
   { path: 'create', component: CreatePostsComponent },
   { path: 'update/:id', component: UpdatePostsComponent },
   { path: 'login', component: LoginComponent },

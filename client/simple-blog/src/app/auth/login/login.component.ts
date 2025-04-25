@@ -20,7 +20,7 @@ export class LoginComponent {
   async login() {
     const success = await this.authService.login(this.username, this.password);
     if (success) {
-      this.router.navigate(['/posts']);
+      this.router.navigate(['']);
     } else {
       this.errorMessage = 'Invalid username or password';
     }

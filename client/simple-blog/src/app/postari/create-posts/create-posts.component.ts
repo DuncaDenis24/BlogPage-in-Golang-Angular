@@ -27,7 +27,7 @@ export class CreatePostsComponent {
     };
     this.postService.addPost(newPost).subscribe(() => {
       alert('Post created successfully!');
-      this.router.navigate(['/posts']);
+      this.router.navigate(['']);
     }, error => {
       console.error('Error creating post:', error);
       alert('An error occurred while creating the post.');
