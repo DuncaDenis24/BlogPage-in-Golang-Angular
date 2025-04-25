@@ -124,31 +124,31 @@ Follow the steps below to get the project running on your local machine.
     This command will build the Angular application and serve it in your browser, usually at `http://localhost:4200`.
 
 ## Project Structure
-
+```bash
 BlogPage-in-Golang-Angular/
-├── server/             # Go backend code
-│   ├── database/       # Database connection and models
-│   ├── handlers/       # API request handlers (controllers)
-│   ├── models/         # Data structures (Go structs)
-│   ├── routes/         # API endpoint definitions
-│   ├── main.go         # Entry point for the backend application
-│   ├── go.mod          # Go module definition
-│   └── go.sum          # Go dependencies checksum
-└── client/             # Angular frontend code
-├── angular.json    # Angular CLI configuration
-├── package.json    # Frontend dependencies
-├── tsconfig.json   # TypeScript configuration
-├── src/
-│   ├── app/        # Application source code
-│   │   ├── components/ # Angular components
-│   │   ├── services/   # Angular services
-│   │   ├── app-routing.module.ts # Application routes
-│   │   ├── app.component.ts    # Root component
-│   │   └── ...
-│   ├── assets/     # Static assets
-│   ├── environments/ # Environment-specific configurations
-│   ├── index.html    # Main HTML file
-│   ├── main.ts       # Entry point for Angular
-│   └── ...
-├── node_modules/   # Frontend dependencies (not in Git)
-└── ...
+  server/             # Go backend code
+    database/       # Database connection and models
+    handlers/       # API request handlers (controllers)
+    models/         # Data structures (Go structs)
+    routes/         # API endpoint definitions
+    main.go         # Entry point for the backend application
+    go.mod          # Go module definition
+    go.sum          # Go dependencies checksum
+  client/             # Angular frontend code
+    angular.json    # Angular CLI configuration
+    package.json    # Frontend dependencies
+    tsconfig.json   # TypeScript configuration
+    src/
+      app/        # Application source code
+        components/ # Angular components
+        services/   # Angular services
+        app-routing.module.ts # Application routes
+        app.component.ts    # Root component
+        ...
+      assets/     # Static assets
+      environments/ # Environment-specific configurations
+      index.html    # Main HTML file
+      main.ts       # Entry point for Angular
+      ...
+    node_modules/   # Frontend dependencies (not in Git)
+    ...
