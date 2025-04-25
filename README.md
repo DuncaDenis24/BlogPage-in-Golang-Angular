@@ -150,5 +150,9 @@ BlogPage-in-Golang-Angular/
 Functionality
 
 ![image](https://github.com/user-attachments/assets/17f74bf8-cbdb-4f6d-8698-cd64c64d51a2)   ![image](https://github.com/user-attachments/assets/03d49b23-04c5-4194-84bd-aa45c3af5f4b)    ![image](https://github.com/user-attachments/assets/afa109f7-3383-4fa2-bab7-3e5793ecbfd8)
+![image](https://github.com/user-attachments/assets/2cf8d1b4-778a-415a-98d2-c07f82020ebb)   ![image](https://github.com/user-attachments/assets/09606ba2-f9c5-48d8-989d-8b4fef63a299)
+
+
+![image](https://github.com/user-attachments/assets/e447dc41-d759-426d-9e3b-00a7f318d245)
 
 
